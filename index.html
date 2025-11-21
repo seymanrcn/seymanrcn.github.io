@@ -1,10 +1,503 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Merhaba!</title>
-  </head>
-  <body>
-    <h1>GitHub Pages ile yayına girdim 🎉</h1>
-    <p>Bu benim ilk web sitem.</p>
-  </body>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şeyma Nur Cin - Bilgisayar Mühendisliği Öğrencisi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,60 600,30 T1200,0 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 15px 20px;
+        }
+
+        nav li {
+            margin: 5px 15px;
+        }
+
+        nav a {
+            color: #1a237e;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #1a237e;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: #1a237e;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #1a237e;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(26, 35, 126, 0.15);
+        }
+
+        .info-card h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-card, .experience-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.1);
+            border-left: 4px solid #1a237e;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover, .experience-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(26, 35, 126, 0.15);
+        }
+
+        .project-card h3, .experience-card h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #e8eaf6;
+            color: #1a237e;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #1a237e;
+            font-weight: bold;
+        }
+
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(26, 35, 126, 0.08);
+            border-left: 3px solid #1a237e;
+        }
+
+        footer {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ŞEYMA NUR CİN</h1>
+        <p>Bilgisayar Mühendisliği Öğrencisi</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#hakkimda">Hakkımda</a></li>
+            <li><a href="#projeler">Projeler</a></li>
+            <li><a href="#deneyim">Deneyim</a></li>
+            <li><a href="#beceriler">Beceriler</a></li>
+            <li><a href="#sertifikalar">Sertifikalar</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="hakkimda">
+            <h2>Hakkımda</h2>
+            <div class="about-grid">
+                <div class="info-card">
+                    <h3>🎓 Eğitim</h3>
+                    <p><strong>İstanbul Ticaret Üniversitesi</strong></p>
+                    <p>Bilgisayar Mühendisliği (İngilizce - %100 Burslu)</p>
+                    <p>GPA: 3.52/4</p>
+                    <p>2021 - 2026</p>
+                </div>
+                <div class="info-card">
+                    <h3>🌍 Diller</h3>
+                    <p><strong>İngilizce:</strong> İleri Düzey</p>
+                    <p><strong>Almanca:</strong> Başlangıç Seviyesi</p>
+                    <p><strong>Türkçe:</strong> Ana Dil</p>
+                </div>
+                <div class="info-card">
+                    <h3>🎯 Odak Alanlarım</h3>
+                    <p>• Yapay Zeka & Makine Öğrenmesi</p>
+                    <p>• Veri Analizi & Bilimi</p>
+                    <p>• Doğal Dil İşleme (NLP)</p>
+                    <p>• Proje Yönetimi</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projeler">
+            <h2>Projeler</h2>
+            
+            <div class="project-card">
+                <h3>🤖 Yapay Zeka Destekli Toplantı Aksiyon Maddesi Çıkarıcı</h3>
+                <p>Python ve Google Gemini API kullanılarak geliştirilen otomasyon aracı, toplantı transkriptlerinden görev ve aksiyon maddelerini otomatik olarak çıkarır. Büyük Dil Modelleri (LLM) ile API entegrasyonu ve prompt engineering teknikleriyle yüksek doğruluk sağlar.</p>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Google Gemini API</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Prompt Engineering</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>🏥 Diyabet Riski Tahmin Projesi</h3>
+                <p>Diyabet riski tahmini için makine öğrenimi algoritmaları kullanarak hasta verilerini analiz eden bir yapay zeka modeli geliştirdim.</p>
+                <div class="tech-tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Veri Analizi</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>❤️ Kalp Hastalığı Risk Tahmini</h3>
+                <p>Kalp hastalığı riskini değerlendirmek için veri analitiği ve sınıflandırma algoritmaları içeren bir yapay zeka sistemi tasarladım.</p>
+                <div class="tech-tags">
+                    <span class="tag">Sınıflandırma</span>
+                    <span class="tag">Veri Analitiği</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>😷 Face Mask Detector</h3>
+                <p>Veri setindeki veriler analiz edilerek görüntülerden yüz maskesi takılıp takılmadığını tespit eden yapay zeka projesi. PyCharm ortamında derin öğrenme modeli geliştirerek veri setini eğitip %95+ doğrulukla çalışan bir sistem geliştirdim.</p>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Tkinter</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>💊 Eczane Otomasyonu</h3>
+                <p>Access veritabanı kullanarak, eczane yönetimini kolaylaştıran bir otomasyon sistemi geliştirdim. Sistem, reçete yönetimi, stok takibi, müşteri verileri ve satış raporları gibi temel eczane işlemlerini dijitalleştiriyor.</p>
+                <div class="tech-tags">
+                    <span class="tag">C#</span>
+                    <span class="tag">.NET</span>
+                    <span class="tag">Microsoft Access</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="deneyim">
+            <h2>Deneyim</h2>
+            
+            <div class="experience-card">
+                <h3>📝 Huawei Medium Yazarlığı</h3>
+                <p><strong>Huawei Türkiye</strong> | Ocak 2025 - Haziran 2025</p>
+                <p>Huawei Türkiye Medium Yazarlık Programı çerçevesinde Yapay Zeka ve Veri Analizi alanında Medium yazılarının hazırlanması ve topluluk organizasyonunun yürütülmesine katkı sağlandı.</p>
+            </div>
+
+            <div class="experience-card">
+                <h3>🤖 Yapay Zeka Mühendisliği Stajyeri</h3>
+                <p><strong>INTELLIUM</strong> | Temmuz 2025 - Ağustos 2025</p>
+                <p>Proje yönetimi ve iş analizi süreçlerine destek vererek teknik çözüm geliştirme, Doğal Dil İşleme (NLP) teknikleriyle yapılandırılmamış metinlerden anlamlı bilgiler çıkarma, veri temizleme ve analiz süreçlerini gerçekleştirdim. Veri işleme ve API ile model entegrasyonunda görev aldım.</p>
+            </div>
+
+            <div class="experience-card">
+                <h3>💼 Donanım Projeleri İş Analizi ve Proje Yönetimi - Stajyer Mühendis</h3>
+                <p><strong>TELCOSET İLERİ TEKNOLOJİ</strong> | Temmuz 2024 - Eylül 2024</p>
+                <p>Donanım projelerinin iş analiz süreçlerine katkıda bulunarak gereksinimlerin belirlenmesine destek sağladım. Müşteri talepleri analiz ederek danışmanlık hizmetlerine yardımcı oldum ve çözüm önerileri geliştirdim.</p>
+            </div>
+        </section>
+
+        <section id="beceriler">
+            <h2>Teknik Beceriler</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Programlama Dilleri</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C#</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🧠 Yapay Zeka & Veri Bilimi</h3>
+                    <ul>
+                        <li>Makine Öğrenmesi</li>
+                        <li>Doğal Dil İşleme (NLP)</li>
+                        <li>Veri Analizi</li>
+                        <li>Power BI</li>
+                        <li>Excel & Google Sheets</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🗄️ Veritabanı Yönetimi</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>SQLite</li>
+                        <li>Microsoft Access</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔧 Proje Yönetimi & Araçlar</h3>
+                    <ul>
+                        <li>Git (Versiyon Kontrolü)</li>
+                        <li>Jira</li>
+                        <li>Agile Metodolojileri</li>
+                        <li>İş Analizi</li>
+                        <li>PowerPoint</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sertifikalar">
+            <h2>Sertifikalar & Eğitimler</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <strong>Yapay Zeka Bootcamp</strong><br>
+                    Pupilica (12.2024-02.2025)
+                </div>
+                <div class="cert-item">
+                    <strong>Proje Yönetim Temelleri</strong><br>
+                    Bilgi Teknolojileri ve İletişim Kurumu
+                </div>
+                <div class="cert-item">
+                    <strong>IBM İle Kodluyoruz: CyberStart</strong><br>
+                    IBM
+                </div>
+                <div class="cert-item">
+                    <strong>Uluslararası İş Analizi Metodolojisi ve Teknikleri</strong><br>
+                    BTK
+                </div>
+                <div class="cert-item">
+                    <strong>Python ile Makine Öğrenmesi Uygulamaları</strong><br>
+                    BTK
+                </div>
+                <div class="cert-item">
+                    <strong>Makine Öğrenmesi</strong><br>
+                    Bilgi Teknolojileri ve İletişim Kurumu
+                </div>
+                <div class="cert-item">
+                    <strong>Scrum Eğitimi</strong><br>
+                    BTK
+                </div>
+                <div class="cert-item">
+                    <strong>Google Dijital Pazarlama Temelleri</strong><br>
+                    BTK
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🤝 Topluluklar & Gönüllülükler</h2>
+            <div class="about-grid">
+                <div class="info-card">
+                    <h3>Ticaret Kalite Topluluğu</h3>
+                    <p>2021 - Halen</p>
+                    <p>Kalite yönetim sistemleri ve süreç iyileştirme üzerine eğitim ve seminerlere katılım.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Bilgi ve Teknoloji Topluluğu</h3>
+                    <p>2021 - Halen</p>
+                    <p>Proje ekiplerinde görev alarak teknik sunumlar ve takım içi deneyim.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Huawei Türkiye Topluluğu</h3>
+                    <p>2024 - Halen</p>
+                    <p>Teknoloji seminerleri ve gönüllü medium yazarlığı programı.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Şeyma Nur Cin | Bilgisayar Mühendisliği Öğrencisi</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/şeymanur-cin" target="_blank">LinkedIn</a>
+            <a href="https://medium.com/@cinseymanur" target="_blank">Medium</a>
+        </div>
+    </footer>
+</body>
 </html>
